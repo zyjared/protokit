@@ -1,0 +1,75 @@
+{
+  "name": "protokit",
+  "type": "module",
+  "version": "0.0.0",
+  "packageManager": "pnpm@10.6.2",
+  "description": "",
+  "keywords": [],
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.cts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "unbuild --stub",
+    "lint": "eslint",
+    "start": "tsx src/index.ts",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "protoc": "tsx scripts/protoc-decode.ts",
+    "proto:decode": "tsx scripts/proto-decode.ts",
+    "proto:compile": "tsx scripts/proto-compile.ts",
+    "proto": "pnpm proto:compile && pnpm proto:decode",
+    "request": "tsx requests/index.ts",
+    "build": "pnpm proto && unbuild"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21",
+    "long": "^5.3.1",
+    "protobufjs": "^7.4.0"
+  },
+  "lint-staged": {
+    "*": "eslint --fix"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^4.11.0",
+    "@antfu/ni": "^24.3.0",
+    "@antfu/utils": "^9.1.0",
+    "@types/lodash": "^4.17.16",
+    "@types/node": "^22.13.12",
+    "axios": "^1.8.4",
+    "bumpp": "^10.1.0",
+    "colorette": "^2.0.20",
+    "commander": "^13.1.0",
+    "eslint": "^9.23.0",
+    "lint-staged": "^15.5.0",
+    "protobufjs-cli": "^1.1.3",
+    "rimraf": "^6.0.1",
+    "simple-git-hooks": "^2.12.1",
+    "tinyexec": "^1.0.0",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.2",
+    "unbuild": "^3.5.0",
+    "vite": "^6.2.2",
+    "vitest": "^3.0.9",
+    "vitest-package-exports": "^0.1.1",
+    "yaml": "^2.7.0"
+  },
+  "pnpm": {
+    "ignoredBuiltDependencies": [
+      "esbuild",
+      "simple-git-hooks"
+    ],
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "simple-git-hooks"
+    ]
+  }
+}
